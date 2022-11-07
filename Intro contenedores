@@ -1,0 +1,28 @@
+Evolucion del computo 
+Maquinas compartidas: Lograr que multiples aplicaciones corrieran en nodos fisicos.
+VMs/ bare metaal: Segmentar una maquina en diferntes maquina mas pequeñas, llamadas maquina virtuales.
+Contenedore: 
+
+Estructura de un sistema operativo: Capas 
+1.Kernel-La parte principal del sistema operativo: Es el componente base para empezar un maquina
+2. Modulos del Kernel (ip_tables, nfs) : 
+3.Controladores del dispotivo
+4.Herramientas del sistema (terminal, compilador, administracion del disco)
+5.Librerias (socket, ssl, crypto)
+6.Utilerias (file manager)
+7.Otros-App: Pueden llegar a necesitar dependencias
+
+Las aplicaciones requiern si o si el Kernel, pero las dependencias varian eje:segun el lenguaje de programacion que se necesite.
+¿Porque se iban cambiando y modificando?
+Maquina compartidas
+No se veia una manera consistente de manejar el ciclo de vida de las aplicaciones-archivos regados por todo el sistema operativio
+problemas: Las dependencias se mezclaban unas con otras y con la maquina huesped-host
+           Una aplicacion puede acaparar recursos, impactando a otras
+Se genera una solucion "temporal" que consiste: Dedicar maquinas huesped para las aplicaciones criticas - Empaquetar todas las dependencias con la aplicacion
+
+
+
+
+RETO o FIN: Lograr administrar el versionamiento y poder lograr ambientes consistentes en las diferentes etapas desarrollo-calidad-prodcuccion
+
+
