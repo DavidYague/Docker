@@ -1,4 +1,6 @@
 Evolucion del computo 
+RETO o FIN: Lograr administrar el versionamiento y poder lograr ambientes consistentes en las diferentes etapas desarrollo-calidad-prodcuccion
+
 Maquinas compartidas: Lograr que multiples aplicaciones corrieran en nodos fisicos.
 VMs/ bare metaal: Segmentar una maquina en diferntes maquina mas pequeñas, llamadas maquina virtuales.
 Contenedore: 
@@ -19,10 +21,29 @@ No se veia una manera consistente de manejar el ciclo de vida de las aplicacione
 problemas: Las dependencias se mezclaban unas con otras y con la maquina huesped-host
            Una aplicacion puede acaparar recursos, impactando a otras
 Se genera una solucion "temporal" que consiste: Dedicar maquinas huesped para las aplicaciones criticas - Empaquetar todas las dependencias con la aplicacion
+Problemas de dicha "Solucion" Dedicar maquinas host desperdiciaba recursos - Maquina fisicas toman timepo en aprovisionar y configurar
+
+VMs
+llega la era de la virtualizacion- perimte dividir la estructura fisica en multiples maquinas, se logra que la infraestructura sea mas econcomico
+Tratar de minimizar la diferencia entre los ambientes, hacer que las maquina fueran inmutables
+Problemas
+Toman muchos recursos al virtualizar todo el hardware base(mucho overhead). Cada maquina virtual tenia su propio kernel-libs-app
+Las VMS tardan mucho en iniciar-Puede tomar minutos entonces para aplicaciones que necesitan escalar rapidamente no era suficiente
+
+Desplegar Contenedores.
+
+Aislamiento de recursos 
+Rapido, se cambia de minutos a milisegundos
+Gran eficencia- densisdad para empaqueter mas aplicaciones dentro de un nodo fisico
+Portabilidad entre sistemas operativos y entre nubes.
+Ambientes consistentes entre desarrolo y produccion 
+
+Insertar Imagen de compartivo entre los 3 
 
 
 
 
-RETO o FIN: Lograr administrar el versionamiento y poder lograr ambientes consistentes en las diferentes etapas desarrollo-calidad-prodcuccion
+
+
 
 
