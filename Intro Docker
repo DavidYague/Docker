@@ -2,3 +2,14 @@ Docker tecnologia que se convirtio en un"estandar" para desarrolllar-distribuir-
 
 Porque docker? 
 Para poder escalar y hacer compatible un software.
+
+Componentes- estructura Docker
+
+1.Docker Daemon - Server de docker, es un servicio que maneja todas las entidades
+2. Rest API - Interfaz http
+3. Client docker CLI:  cliente que interactura con el docker daemon
+
+Entidades: Contenedores(donde corren los aplicativos)-Imagenes(Son artefactos que usa docker para empaquetar contenedores y pode distribuirlo)-
+Volumen de datos(permite acceder con seguridad al sistema de archivos de la maquina o servidores)-network (permite a los contenedores comunicarse entre si)
+ 
+ 
