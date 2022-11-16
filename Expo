@@ -1,0 +1,62 @@
+The default bridgr (Puente determinado)
+Es la primera y aveces la unica red con la cual nos relacionamos cuando implementamos docker. Es el predeterminado ¿Porque? 
+
+Consola , escribir la direccion IP show para ver.. 
+Se tiene la interfaz de bucle invertido y luego se tiene la interfaz principal que nos conecta a nuestra red domestica 
+
+1: lo :(interfaz de bucle)
+2: bond0: (Interfaz principal)
+
+Actualizar repositorios con el comando sudo apt update, antes de realizar la instalacion de docker.io
+Instalar sudo apt install docker.io -y
+Volver a mostrar las ip a ver si se cuentan con nuevas ip 
+
+dcoker network ls, esto mostrara una lista de nuestras redes docker actuales
+
+Existen 7 tipos de redes en docker
+
+En el menu se observa la seccion llamada controlador y en docker cuando se hablar de "driver" o controlador se refiere basicamente a un tipo de red 
+
+Entonces nuestra red se llama "bridge" y su tipo tambien es "bridge" 
+
+Vamos a implementar algunos contenedores en nuestra red predeterminada. Mediante el comando docker run -itd --rm --name contenedor_prueba busybox
+
+cambios para que el tablero sea interactivo y desasociado ejecutandose en segundo plano, y haremos un RM de table entonces con esto se limpiara solo cuando termines con el 
+nombramos nuestro contenedor y finalmente se especifica la imagen que se usara para el contenedor, caja ocupada es rapido, ligero, rapido 
+
+Crear los diferentes contenedores con las diferentes imagenes que son imagenes publicas en docker hub 
+Luego revisar si todo estan on con el comando docker ps
+
+Cuando implementamos nuestros contenedores dijimos algo sobre redes? no no lo hicimos, simplemente dejamos que haga lo suyo de forma predeterminada, lo que significa
+que se arrojo o entro a nuestra red "bridge" de la que se esta hablando
+
+Y esto es lo que hizo cuando implementamos esos contenedores en la red predeterminada. Docker creo automaticamente tres interfaces virtuales de ethernet y se conecto 
+o lo vinculo al docker zero bridge y actua como un interruptor, y hay una interfza de ethernet virtual para cada uno de nuestros contenedores. En ese proceso tambien entrega direcciones ip a cada uno de los
+contenedores lo que significa que tambien esta ejecutando DHCP
+
+comando docker network inspect bridge me muestra los contenedores que estan asociados a mi driver o red predeterminada
+En el se puede observar las direcciones ip asignadas para cada uno de ellos y que estan el rango adecuado, lo que permite que se pueden comunicar entre ellos 
+Se puede realizar un ping entre contenedores 
+
+docker attach name_contenedor (el comando attach permite conectar al proceso en ejecucion de un contenedor)
+luego el ping. ping "ip del contenedor" pero como el contenedor se esta ejecutando y esta en proceso se agrega dos comandos mas
+ping -c 3 "ip_contenedor" primero el -c para cortar o para el proceso y el numero de paquetes que se quieran enviar
+
+Se puede realizar un ip route dentro del contenedor para ver la ruta del docker0
+Tambien puede apuntar el contenedor hacia internet
+prueba de ping hacia internet.
+
+Pero comoe s que esto funciona?  Y esto es gracias al NAT
+
+Sin embargo cada vez que se cree un contenedor la ip puede cambiar. Ya que no se reservan a los contenedores, lo cual es un problema si varios contenedores se conectan
+entre si.
+Por eso seria mejor comunicarse con los contenedores por su nombre mas no por su ip, y esta es otra de las caracteristicas con las que cuenta docker.
+Si embargo en la red bridge generada por defecto no es posible utilizar ese mecanismo 
+ejemplo con nombres
+
+Para ello hay que crearse una propia red
+ red dentro del pc 
+ docker network create name_red 
+ 
+
+
